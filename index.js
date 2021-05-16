@@ -1,6 +1,6 @@
 // Add your code here
 
-function submitData(username,userEmail) 
+function submitData(name,email) 
     {
 fetch('http://localhost:3000/users', {
     method: "POST",
@@ -9,8 +9,8 @@ fetch('http://localhost:3000/users', {
         "Accept": "application/json"
     },
     body: JSON.stringify({
-        name: username,
-        email: userEmail
+        name,
+        email
     })
     })
 .then(function(response) {
@@ -20,7 +20,7 @@ fetch('http://localhost:3000/users', {
           document.body.innerHTML = object["id"]
         })
         .catch(function(error) {
-           
+            document.body.innerHTML= error.message
           }); 
     }
 
