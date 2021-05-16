@@ -1,10 +1,8 @@
 // Add your code here
-const pTag = document.getElementsByTagName('p')
 
 function submitData(username,userEmail) 
     {
-const dataObj = 
-    {
+fetch('http://localhost:3000/users', {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
@@ -14,17 +12,15 @@ const dataObj =
         name: username,
         email: userEmail
     })
-    }
-fetch('http://localhost:3000/users', dataObj)
+    })
 .then(function(response) {
           return response.json();
         })
         .then(function(object) {
-          let text = document.createTextNode(object.id)
-        pTag.appendChild(text)
+          document.body.innerHTML = object["id"]
         })
         .catch(function(error) {
-            console.log(error.message);
+           
           }); 
     }
 
